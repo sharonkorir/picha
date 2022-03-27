@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,9 @@
 
 </head>
 <body>
-    {% block content %} <h1>test base: filter images by location</h1> {%endblock%}
-    {% block javascript %}
+  {% include "navbar.html" %}
+  {% block content %} <h1>test base: filter images by location</h1> {%endblock%}
+  {% block javascript %}
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
