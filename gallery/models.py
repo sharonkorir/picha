@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.db import models
 
 # Create your models here.
@@ -31,6 +32,15 @@ class Image(models.Model):
     category = models.ForeignKey(category, on_delete=models.DO_NOTHING)
     location = models.ForeignKey(location, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+    def save_image(self):
+        self.save()
+
     @classmethod
     def get_images(cls):
         images = cls.objects.all()
@@ -38,12 +48,13 @@ class Image(models.Model):
 
     @classmethod
     def location_filter(cls,location):
-        images = cls.objects.filter(location = 1)
+        location = Image.location
+        images = cls.objects.filter(location = location)
         return images
 
     @classmethod
     def search_by_category(cls,search_term):
-        images = cls.objects.filter(category__icontains=search_term)
+        images = cls.objects.filter(category__name__icontains=search_term)
         return images
 
     
