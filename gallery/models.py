@@ -12,6 +12,9 @@ class Owner(models.Model):
     def __str__(self):
         return self.first_name
 
+    def save_owner(self):
+        self.save()
+
 class location(models.Model):
     '''
     location model acts as blueprint for all location instances
@@ -37,6 +40,11 @@ class Image(models.Model):
     name = models.CharField(max_length =60)
     description = models.TextField()
     #image = models.ImageField()
-    editor = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
+    owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(category, on_delete=models.DO_NOTHING)
     location = models.ForeignKey(location, on_delete=models.DO_NOTHING)
+
+    
+
+    
+    
