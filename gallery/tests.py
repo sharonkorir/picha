@@ -1,26 +1,35 @@
+from email.mime import image
+from unicodedata import name
 from django.test import TestCase
-from .models import Owner, location, category, Image
+from .models import location, category, Image
 
 # Create your tests here.
 
-class OwnerTestClass(TestCase):
+class ImageTestClass(TestCase):
 
     '''
-    Test class that defines test cases for the owner class behaviours.
+    Test class that defines test cases for the image class behaviours.
 
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
     '''
-    # Set up method
     def setUp(self):
-        self.sharon= Owner(first_name = 'Sharon', last_name ='Korir')
+        # Creating a new category and saving it
+        self.new_category = category(name = 'test category')
+        self.new_category.save()
 
-    # Testing  instance
-    def test_instance(self):
-        self.assertTrue(isinstance(self.sharon,Owner))
-    
-    # Testing Save Method
-    def test_save_method(self):
-        self.sharon.save_owner()
-        owners = Owner.objects.all()
-        self.assertTrue(len(owners) > 0)
+        # Creating a new location and saving it
+        self.new_location = location(name = 'test location')
+        self.new_location.save()
+
+        self.new_image= Image(name = 'Test Image',description = 'This is a random test image', image = 'random.jpg')
+        self.new_image.save()
+
+        self.new_image.category.add(self.new_category)
+
+        self.new_image.location.add(self.new_location)
+
+    def tearDown(self):
+        location.objects.all().delete()
+        category.objects.all().delete()
+        Image.objects.all().delete()
