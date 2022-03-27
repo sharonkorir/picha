@@ -1,7 +1,8 @@
-from cgitb import html
-from django.shortcuts import render
-from django.http import HttpResponse
+
+from django.shortcuts import redirect, render
+from django.http import Http404, HttpResponse
 import datetime as dt
+from .models import Image
 
 # Create your views here.
 def test(request):
@@ -9,4 +10,17 @@ def test(request):
 
 def show_all_images(request):
     
-    return render(request, 'index.html')
+    images = Image.get_images()
+    return render(request, 'index.html', {"images":images})
+
+#def filter_images(request,location):
+    try:
+        #get image by location
+        images = Image.location_filter(location)
+    except ValueError:
+      #raise 404
+      raise Http404()
+      assert False
+
+    if location == Image.location():
+        return redirect()

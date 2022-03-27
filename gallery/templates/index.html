@@ -1,5 +1,37 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
-<p>testing again, lol</p>
+
+
+<div class="container-fluid">
+
+  <!-- Looping through images   -->
+  {% for image_item in images %}
+
+  <div class="row">
+    <div class="col s12 m6 l3" style="display: flex;">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{image_item.image.url}}" class="img-responsive" alt="Image">
+          <span class="card-title">{{image_item.name}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{image_item.description}}.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+          
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There are no images in this category</h2>
+  </div>
+  {% endfor %}
+
+</div>
+
 {% endblock %}
