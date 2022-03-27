@@ -7,6 +7,6 @@ import datetime as dt
 def test(request):
     return HttpResponse('testing gallery')
 
-def show_images(request):
+def show_all_images(request):
     
     return render(request, 'index.html')
