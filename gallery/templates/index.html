@@ -3,35 +3,97 @@
 {{block.super}}
 
 
-<div class="container-fluid">
+<div class="col-sm-4 col-md-4 navbar-right">
+
+  <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search Article" name="article">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+
+  </form>
+</div>
+<!-- search form end -->
 
   <!-- Looping through images   -->
   {% for image_item in images %}
-
-  <div class="row">
-    <div class="col s12 m6 l3" style="display: flex;">
-      <div class="card">
-        <div class="card-image">
-          <img src="{{image_item.image.url}}" class="img-responsive" alt="Image">
-          <span class="card-title">{{image_item.name}}</span>
-        </div>
-        <div class="card-content">
-          <p>{{image_item.description}}.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+    <div class="container">
+      <div class="row" style="display: flex;">
+        <div class="col-3" style="display: flex; background-color: yellow;">
+          <div class="card">
+            <img src="{{image_item.image.url}}" class="img-responsive" alt="{{image_item.name}} image">
+            <div class="card-body">
+              <h4 class="card-title" style="font-weight: 600;">{{image_item.name}}</h4>
+              <p class="card-text">{{image_item.description}}</p>
+              <a href="" class="btn btn-primary">View</a>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image">
+                Launch demo modal
+              </button>
+              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#imagemodal">
+                Show trailer
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-          
+    <!-- Modal -->
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Trailer for {{image_item.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12" id="trailer">
+                  <img src="{{image_item.image.url}}" alt="">
+              </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{image_item.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>{{image_item.description}}</p>
+          </div>
+          <div class="modal-footer">
+            <ul>
+              <li>{{image_item.category}}</li>
+              <li>{{image_item.location}}</li>
+            </ul>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   {% empty %}
-  <div class="row">
-    <h2 class="text-center">There are no images in this category</h2>
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center">There are no images in this category</h2>
+    </div>
   </div>
   {% endfor %}
-
 </div>
 
 {% endblock %}
