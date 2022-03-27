@@ -39,7 +39,7 @@ class Image(models.Model):
     '''
     name = models.CharField(max_length =60)
     description = models.TextField()
-    #image = models.ImageField()
+    image = models.ImageField(upload_to = 'images/',default='no image')
     owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(category, on_delete=models.DO_NOTHING)
     location = models.ForeignKey(location, on_delete=models.DO_NOTHING)
