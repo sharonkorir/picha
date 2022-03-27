@@ -51,8 +51,21 @@
           <p>{{image_item.description}}.</p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <button data-target="modal1" class="btn modal-trigger">Modal</button>
         </div>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <img src="{{image_item.image.url}}" alt="">
+        <h4>{{image_item.name}}</h4>
+        <p>{{image_item.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <p>Location {{image_item.location}}</p>
+        <p>Category {{image_item.category}}</p>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
       </div>
     </div>
   </div>
