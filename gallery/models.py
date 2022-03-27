@@ -1,19 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Owner(models.Model):
-    '''
-    Owner model to manage photos on admin dashboard
-    '''
-    first_name = models.CharField(max_length =30)
-    last_name = models.CharField(max_length =30)
-    #email = models.EmailField()
-
-    def __str__(self):
-        return self.first_name
-
-    def save_owner(self):
-        self.save()
 
 class location(models.Model):
     '''
@@ -40,7 +27,7 @@ class Image(models.Model):
     name = models.CharField(max_length =60)
     description = models.TextField()
     image = models.ImageField(upload_to = 'images/',default='no image')
-    owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
+    #owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING, null=True)
     category = models.ForeignKey(category, on_delete=models.DO_NOTHING)
     location = models.ForeignKey(location, on_delete=models.DO_NOTHING)
 
