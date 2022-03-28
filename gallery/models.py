@@ -9,8 +9,25 @@ class location(models.Model):
     '''
     name = models.CharField(max_length =30)
 
+    def save_location(self):
+        self.save()
+
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_location_by_id(cls, id):
+        location = cls.objects.filter(id = id)
+        return location
+
+    @classmethod
+    def delete_location(cls, id):
+        location = cls.get_location_by_id(id).delete()
+
+    @classmethod
+    def update_location(cls,id):
+        location = cls.get_location_by_id(id).update()
+        return location
 
 class category(models.Model):
     '''
@@ -18,8 +35,25 @@ class category(models.Model):
     '''
     name = models.CharField(max_length =30)
 
+    def save_category(self):
+        self.save()
+
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_category_by_id(cls, id):
+        category = cls.objects.filter(id = id)
+        return category
+
+    @classmethod
+    def delete_category(cls, id):
+        category = cls.get_category_by_id(id).delete()
+
+    @classmethod
+    def update_category(cls,id):
+        category = cls.get_category_by_id(id).update()
+        return category
 
 class Image(models.Model):
     '''
