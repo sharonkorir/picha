@@ -47,8 +47,21 @@ class Image(models.Model):
         return images
 
     @classmethod
+    def get_image_by_id(cls, id):
+        image = cls.objects.filter(id = id)
+        return image
+
+    @classmethod
+    def delete_images(cls, id):
+        image = cls.get_image_by_id(id).delete()
+
+    @classmethod
+    def update_image(cls,id):
+        image = cls.get_image_by_id(id).update()
+        return image
+
+    @classmethod
     def location_filter(cls,location):
-        location = Image.location
         images = cls.objects.filter(location__name = location)
         return images
 

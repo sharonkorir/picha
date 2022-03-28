@@ -16,7 +16,7 @@
             <input id="search" type="search" name='image' placeholder="search category...">
           </div>
           <label class="label-icon" for="search">
-            <button type="submit" class="input-group-addon btn">search</button>
+            <button type="submit" class="input-group-addon btn teal">search</button>
           </label>
           <!--<button type="submit" class="input-group-addon btn">search</button>-->
           </div>
@@ -28,7 +28,25 @@
   </div>
 </div>
 
-
+<!--Filter by location-->
+<div class="container">
+  <div id="categories">
+    <ul style="display: flex; justify-content: space-around;">
+      <div class="chip teal lighten-1">
+        <a href="#tokyo">Tokyo</a></li>
+      </div>
+      <div class="chip teal lighten-1">
+        <a href="#qatar">Qatar</a></li>
+      </div>
+      <div class="chip teal lighten-1">
+        <a href="#nairobi">Nairobi</a></li>
+      </div>
+      <div class="chip teal lighten-1">
+        <a href="#italy">Italy</a></li>
+      </div>
+    </ul>
+  </div>
+</div>
 <!-- Looping through images   -->
 
 <div class="container-fluid">
@@ -40,7 +58,7 @@
           <img src="{{image_item.image.url}}" class="responsive-img" alt="Image">
         </div>
         <div class="card-action">
-          <button data-target="modal1{{image_item.id}}" class="btn modal-trigger">Details</button>
+          <button data-target="modal1{{image_item.id}}" class="btn modal-trigger teal">Details</button>
         </div>
       </div>
     </div>
