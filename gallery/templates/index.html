@@ -31,10 +31,10 @@
 
 <!-- Looping through images   -->
 
-<div class="container">
+<div class="container-fluid">
   <div class="row" >
     {% for image_item in images %}
-    <div class="col s4">
+    <div class="col s12 m4 l3">
       <div class="card-panel hoverable">
         <div class="card-image">
           <img src="{{image_item.image.url}}" class="responsive-img" alt="Image">
