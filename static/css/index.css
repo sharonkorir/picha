@@ -6,5 +6,12 @@ body{
   background-color: #111;
 }
 
+#header-container{
+  background-image: url('/static/olena-sergienko-3BlVILvh9hM-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+
+}
 
 
