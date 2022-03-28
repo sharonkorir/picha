@@ -50,16 +50,20 @@
 <!-- Looping through images   -->
 
 <div class="container-fluid" id="image-body">
-  <div class="row" >
+  <div class="row" id="img-row">
     {% for image_item in images %}
-    <div class="col s12 m4 l3" >
+    <div class="col s12 m4 l3" style="padding: 0px;" >
       <div class="card-panel hoverable teal darken-4" id="card">
-        <div class="card-image">
-          <img src="{{image_item.image.url}}" class="responsive-img" alt="Image">
-        </div>
-        <div class="card-action">
+        <a data-target="modal1{{image_item.id}}" class="modal-trigger teal">
+          <div class="card-image">
+            
+              <img src="{{image_item.image.url}}" class="responsive-img" alt="Image" id="img">
+            
+          </div>
+        </a>
+        <!--<div class="card-action">
           <button data-target="modal1{{image_item.id}}" class="btn modal-trigger teal">Details</button>
-        </div>
+        </div>-->
       </div>
     </div>
   

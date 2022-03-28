@@ -4,37 +4,40 @@
 
 <!--Filter by location-->
 <div class="container">
-  <div id="categories">
+  <div id="locations">
     <ul style="display: flex; justify-content: space-around;">
       <div class="chip teal lighten-1">
-        <a href="#tokyo">Tokyo</a></li>
+        <a href="{%url 'filter_images' location='tokyo'%}">Tokyo</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="#qatar">Qatar</a></li>
+        <a href="{%url 'filter_images' location='qatar'%}">Qatar</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="#nairobi">Nairobi</a></li>
+        <a href="{%url 'filter_images' location='nairobi'%}">Nairobi</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="#italy">Italy</a></li>
+        <a href="{%url 'filter_images' location='italy'%}">Italy</a></li>
       </div>
     </ul>
   </div>
 </div>
 <!-- Looping through images   -->
 
-<div class="container-fluid">
-  <div class="row" >
-    {{location}}
+<div class="container-fluid" id="image-body">
+  <div class="row" id="img-row">
     {% for image_item in images %}
-    <div class="col s12 m4 l3" >
-      <div class="card-panel hoverable teal darken-4" >
-        <div class="card-image">
-          <img src="{{image_item.image.url}}" class="responsive-img" alt="Image">
-        </div>
-        <div class="card-action">
+    <div class="col s12 m4 l3" style="padding: 0px;" >
+      <div class="card-panel hoverable teal darken-4" id="card">
+        <a data-target="modal1{{image_item.id}}" class="modal-trigger teal">
+          <div class="card-image">
+            
+              <img src="{{image_item.image.url}}" class="responsive-img" alt="Image" id="img">
+            
+          </div>
+        </a>
+        <!--<div class="card-action">
           <button data-target="modal1{{image_item.id}}" class="btn modal-trigger teal">Details</button>
-        </div>
+        </div>-->
       </div>
     </div>
   

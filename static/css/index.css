@@ -27,3 +27,25 @@ a{
   color: #e0f2f1;
 }
 
+.card-image{
+  height: 350px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#img{
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+#card{
+  padding: 0px;
+  margin: 5px;
+}
+
+#img-row{
+  padding: 40px;
+}
+
+
