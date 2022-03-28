@@ -2,47 +2,21 @@
 {% block content %}
 {{block.super}}
 
-<!--header-->
-<div class="container-fluid" id="header-container">
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row">
-    <div class="col s2"></div>
-    <div class="col s8" id="header">
-      <!--form start-->
-        <form id="search-site"  action="{% url 'search_results' %}" method='get'>
-          <div class="input-group">
-            <div class="input-field">
-            <input id="search" type="search" name='image' placeholder="search category...">
-          </div>
-          <label class="label-icon" for="search">
-            <button type="submit" class="input-group-addon btn teal">search</button>
-          </label>
-          <!--<button type="submit" class="input-group-addon btn">search</button>-->
-          </div>
-        </form>
-      </div>
-      <!--form end-->
-    </div>
-    <div class="col s2"></div>
-  </div>
-</div>
-
 <!--Filter by location-->
 <div class="container">
   <div id="categories">
     <ul style="display: flex; justify-content: space-around;">
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}" name = "tokyo", type="submit">Tokyo</a></li>
+        <a href="#tokyo">Tokyo</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Qatar</a></li>
+        <a href="#qatar">Qatar</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Nairobi</a></li>
+        <a href="#nairobi">Nairobi</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Italy</a></li>
+        <a href="#italy">Italy</a></li>
       </div>
     </ul>
   </div>

@@ -1,4 +1,5 @@
 
+from unicodedata import name
 from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse
 import datetime as dt
@@ -13,17 +14,10 @@ def show_all_images(request):
     images = Image.get_images()
     return render(request, 'index.html', {"images":images})
 
-#def filter_images(request,location):
-    try:
-        #get image by location
-        images = Image.location_filter(location)
-    except ValueError:
-      #raise 404
-      raise Http404()
-      assert False
-
-    if location == Image.location():
-        return redirect()
+def filter_images(request):
+    location = request.GET.get('location')
+    images = Image.location_filter(location)
+    return render(request, 'location.html', {"location": location,"images":images})
 
 def search_results(request):
 
