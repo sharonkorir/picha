@@ -30,30 +30,30 @@
 
 <!--Filter by location-->
 <div class="container">
-  <div id="categories">
+  <div id="locations">
     <ul style="display: flex; justify-content: space-around;">
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}" name = "tokyo", type="submit">Tokyo</a></li>
+        <a href="{%url 'filter_images' location='tokyo'%}">Tokyo</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Qatar</a></li>
+        <a href="{%url 'filter_images' location='qatar'%}">Qatar</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Nairobi</a></li>
+        <a href="{%url 'filter_images' location='nairobi'%}">Nairobi</a></li>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images'%}">Italy</a></li>
+        <a href="{%url 'filter_images' location='italy'%}">Italy</a></li>
       </div>
     </ul>
   </div>
 </div>
 <!-- Looping through images   -->
 
-<div class="container-fluid">
+<div class="container-fluid" id="image-body">
   <div class="row" >
     {% for image_item in images %}
     <div class="col s12 m4 l3" >
-      <div class="card-panel hoverable teal darken-4" >
+      <div class="card-panel hoverable teal darken-4" id="card">
         <div class="card-image">
           <img src="{{image_item.image.url}}" class="responsive-img" alt="Image">
         </div>
