@@ -64,7 +64,6 @@ class Image(models.Model):
     description = models.TextField()
     image = CloudinaryField('image')
     #image = models.ImageField(upload_to = 'images/',default='no image')
-    #owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING, null=True)
     category = models.ForeignKey(category, on_delete=models.DO_NOTHING)
     location = models.ForeignKey(location, on_delete=models.DO_NOTHING)
 

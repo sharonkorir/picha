@@ -15,6 +15,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,7 @@ SECRET_KEY = 'django-insecure-*w7x5q*-im#i&twan2y1@biq1fjy3)@zwta8u9%%_#x!m+17_5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['picha-app.herokuapp.com']
 
 
 # Application definition
@@ -83,14 +84,27 @@ WSGI_APPLICATION = 'picha.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'picha',
+#         'USER': 'sharon',
+#         'PASSWORD':'12345678',
+#         'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'picha',
-        'USER': 'sharon',
-        'PASSWORD':'12345678',
+        'NAME': 'ddqfh8k8coajn',
+        'USER': 'cenuieunxnwbzl',
+        'PASSWORD':'d7169c020208a3f83df5b155e9eb221eaf2ba3d6895d8e7eda23157472eb5074',
+        'HOST': 'ec2-52-212-228-71.eu-west-1.compute.amazonaws.com',
     }
 }
+
+
 
 
 # Password validation
@@ -131,6 +145,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
