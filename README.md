@@ -4,7 +4,7 @@ This is a personal gallery application that displays photos based on category an
 
 ## Screenshot
 
-<img src="" >
+<img src="static/screenshot.png" >
 
 ### Dependencies
 
