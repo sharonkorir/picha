@@ -16,7 +16,8 @@ def show_all_images(request):
 
 def filter_images(request, location):
     images = Image.location_filter(location=location)
-    return render(request, 'location.html', {"location": location,"images":images})
+    message = f"{location}"
+    return render(request, 'location.html', {"location": location,"images":images, "message":message})
 
 def search_results(request):
 

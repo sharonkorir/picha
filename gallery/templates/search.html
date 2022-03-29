@@ -4,19 +4,47 @@
 
   <div class="row">
     {% if images%}
-      <h2>Found {{ images|length }} of category {{message}}</h2>
+      <h5>Found {{ images|length }} of category '{{message}}'</h5>
     {% else %}
-      <h2> Found 0 images for the category {{message}}</h2>
+      <h5> Found 0 images for the category '{{message}}'</h5>
     {% endif %}
-
   </div>
 
   <div class="row">
-
   {% if images %}
-    {% for image in images %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{image.name}}</h1>
+    {% for image_item in images %}
+    <div class="col s12 m4 l3" style="padding: 0px;" >
+      <div class="card-panel hoverable teal darken-4" id="card">
+        <a data-target="modal1{{image_item.id}}" class="modal-trigger teal">
+          <div class="card-image">
+            
+              <img src="{{image_item.image.url}}" class="responsive-img" alt="Image" id="img">
+            
+          </div>
+        </a>
+      </div>
+    </div>
+      
+      <!-- Modal Structure -->
+      <div id="modal1{{image_item.id}}" class="modal">
+        <div class="modal-content">
+          <img src="{{image_item.image.url}}" alt="" class="responsive-img" id="modal-img">
+          <h5><strong>{{image_item.name|upper}}</strong></h5>
+          <p>{{image_item.description}}</p>
+        </div>
+        <div class="modal-footer">
+          <ul style="display: flex; justify-content: center;">
+            <div class="chip teal lighten-4">
+              {{image_item.location}}
+            </div>
+            <div class="chip teal lighten-4">{{image_item.category}}
+            </div>
+            <div class="chip teal lighten-4">
+              <a href="#!" class="modal-close"><i class="material-icons" style="vertical-align: middle; color: teal;">close</i></a>
+            </div>
+            
+          </ul>
+        </div>
       </div>
     {% endfor %}
   {% endif %}

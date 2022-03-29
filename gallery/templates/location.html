@@ -1,65 +1,80 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
-
 <!--Filter by location-->
 <div class="container">
   <div id="locations">
     <ul style="display: flex; justify-content: space-around;">
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images' location='tokyo'%}">Tokyo</a></li>
+        <a href="{%url 'filter_images' location='tokyo'%}">Tokyo</a>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images' location='qatar'%}">Qatar</a></li>
+        <a href="{%url 'filter_images' location='qatar'%}">Qatar</a>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images' location='nairobi'%}">Nairobi</a></li>
+        <a href="{%url 'filter_images' location='nairobi'%}">Nairobi</a>
       </div>
       <div class="chip teal lighten-1">
-        <a href="{%url 'filter_images' location='italy'%}">Italy</a></li>
+        <a href="{%url 'filter_images' location='italy'%}">Italy</a>
       </div>
     </ul>
   </div>
 </div>
-<!-- Looping through images   -->
-
+<div class="container">
+  <!-- Looping through images   -->
+{% if images%}
+<h5>Found {{ images|length }} image in '{{message}}'</h5>
+{% else %}
+<h5> Found 0 images for the category '{{message}}'</h5>
+{% endif %}
 <div class="container-fluid" id="image-body">
-  <div class="row" id="img-row">
-    {% for image_item in images %}
-    <div class="col s12 m4 l3" style="padding: 0px;" >
-      <div class="card-panel hoverable teal darken-4" id="card">
-        <a data-target="modal1{{image_item.id}}" class="modal-trigger teal">
-          <div class="card-image">
-            
-              <img src="{{image_item.image.url}}" class="responsive-img" alt="Image" id="img">
-            
-          </div>
-        </a>
-        <!--<div class="card-action">
-          <button data-target="modal1{{image_item.id}}" class="btn modal-trigger teal">Details</button>
-        </div>-->
-      </div>
+<div class="row" id="img-row">
+{% for image_item in images %}
+<div class="col s12 m4 l3" style="padding: 0px;" >
+<div class="card-panel hoverable teal darken-4" id="card">
+  <a data-target="modal1{{image_item.id}}" class="modal-trigger teal">
+    <div class="card-image">
+      
+        <img src="{{image_item.image.url}}" class="responsive-img" alt="Image" id="img">
+      
     </div>
+  </a>
+  <!--<div class="card-action">
+    <button data-target="modal1{{image_item.id}}" class="btn modal-trigger teal">Details</button>
+  </div>-->
+</div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1{{image_item.id}}" class="modal">
+<div class="modal-content">
+  <img src="{{image_item.image.url}}" alt="" class="responsive-img" id="modal-img">
+  <h5><strong>{{image_item.name|upper}}</strong></h5>
+  <p>{{image_item.description}}</p>
+</div>
+<div class="modal-footer">
+  <ul style="display: flex; justify-content: center;">
+    <div class="chip teal lighten-4">
+      {{image_item.location}}
+    </div>
+    <div class="chip teal lighten-4">{{image_item.category}}
+    </div>
+    <div class="chip teal lighten-4">
+      <a href="#!" class="modal-close"><i class="material-icons" style="vertical-align: middle; color: teal;">close</i></a>
+    </div>
+      
+  </ul>
   
-    <!-- Modal Structure -->
-    <div id="modal1{{image_item.id}}" class="modal">
-      <div class="modal-content">
-        <img src="{{image_item.image.url}}" alt="" class="responsive-img">
-        <h4>{{image_item.name}}</h4>
-        <p>{{image_item.description}}</p>
-      </div>
-      <div class="modal-footer">
-        <p>Location {{image_item.location}}</p>
-        <p>Category {{image_item.category}}</p>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="material-icons">close</i></a>
-      </div>
-    </div>
-    {% empty %}
-    <div class="row">
-      <h2 class="text-center">There are no images in this category</h2>
-    </div>
-    {% endfor %}
-  </div>
+</div>
+</div>
+{% empty %}
+<div class="row">
+<h2 class="text-center">There are no images in this category</h2>
+</div>
+{% endfor %}
+</div>
 </div>
 
 {% endblock %}
+</div>
+
