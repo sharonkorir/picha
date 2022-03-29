@@ -76,6 +76,6 @@ If you run into any issues or have questions, ideas or concerns, reach out to me
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 
