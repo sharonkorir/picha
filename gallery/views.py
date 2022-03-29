@@ -12,7 +12,8 @@ def test(request):
 def show_all_images(request):
     
     images = Image.get_images()
-    return render(request, 'index.html', {"images":images})
+    ctx = {'images':images}
+    return render(request, 'index.html', ctx)
 
 def filter_images(request, location):
     images = Image.location_filter(location=location)
